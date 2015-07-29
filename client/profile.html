@@ -25,14 +25,16 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <li class="follow-me">
-        {{#if following}}
-          <button class="btn unfollow btn-danger"><i class="fa fa-minus"></i>&nbsp; Unfollow</button>
-        {{else}}
-        <!-- follow button -->
-          <button class="btn follow btn-primary"><i class="fa fa-plus"></i>&nbsp; Follow</button>
-        {{/if}}
-      </li>
+      {{#if notMe}}
+        <li class="follow-me">
+          {{#if following}}
+            <button class="btn unfollow btn-danger"><i class="fa fa-minus"></i>&nbsp; Unfollow</button>
+          {{else}}
+          <!-- follow button -->
+            <button class="btn follow btn-primary"><i class="fa fa-plus"></i>&nbsp; Follow</button>
+          {{/if}}
+        </li>
+      {{/if}}
     </ul>
 
     <!-- following button -->
