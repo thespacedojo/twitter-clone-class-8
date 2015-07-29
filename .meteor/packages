@@ -5,11 +5,14 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 iron:router
 twbs:bootstrap
 stylus
 fortawesome:fontawesome
 useraccounts:bootstrap
 accounts-password
+dburles:collection-helpers
+matb33:collection-hooks
+momentjs:moment
+pfafman:coffee-alerts
+msavin:mongol
