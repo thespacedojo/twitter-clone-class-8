@@ -1,9 +1,3 @@
-Template.tweetStream.helpers({
-  tweets: function() {
-    return Tweets.find();
-  }
-});
-
 Template.tweetStream.events({
   "submit #tweetForm": function(event, template) {
     event.preventDefault();
