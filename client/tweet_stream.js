@@ -13,3 +13,16 @@ Template.tweetStream.events({
     });
   }
 });
+
+FollowChanges = new Mongo.Collection('followerCount');
+
+Template.tweetStream.onCreated( function() {
+
+  Session.set("followers", FollowChanges.find().fetch()[0].count);
+  Tracker.autorun(function () {
+    if(FollowChanges.find().fetch()[0].count != Session.get("followers")) {
+      myTweets.stop();
+      myTweets = Meteor.subscribe('myTweets');
+    }
+  });
+});
