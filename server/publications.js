@@ -1,4 +1,5 @@
 Meteor.publish('myTweets', function() {
+  if (this.userId) {
     var userCursor = Users.find({_id: this.userId});
     var user = userCursor.fetch()[0];
     var cursors = [];
@@ -18,7 +19,6 @@ Meteor.publish('myTweets', function() {
       changed: function(id, user) {
         ids = user.profile.followingIds;
         ids.push(self.userId);
-        debugger
         flatIds = _.flatten(ids);
         addedFollowingIds = _.difference(flatIds, followingIds);
         removedFollowingIds = _.difference(followingIds, flatIds);
@@ -50,6 +50,9 @@ Meteor.publish('myTweets', function() {
     });
 
     return cursors;
+  } else {
+    return [];
+  }
 });
 
 Meteor.publish('profile', function(username) {
