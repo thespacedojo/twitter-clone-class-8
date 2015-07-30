@@ -29,7 +29,7 @@ UserSchema = new SimpleSchema({
   }
 });
 
-Users.attachSchema(UserSchema);
+// Users.attachSchema(UserSchema);
 
 Users.helpers({
   profileImage: function() {
