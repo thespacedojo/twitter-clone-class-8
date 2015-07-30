@@ -8,13 +8,13 @@
 
             <!-- profile photo -->
             <a class="pull-left" href="#">
-              <img class="media-object" src="https://pbs.twimg.com/profile_images/484387570214645761/BFPL5V4G_bigger.jpeg" alt="...">
+              <img class="media-object" src="{{currentUser.profileImage}}" style="height: 40px;" alt="...">
             </a>
 
             <!-- profile information -->
             <div class="media-body">
-              <span class="username"><strong>amanda saffer</strong></span> <br>
-              <span class="handle">@12pixels</span>
+              <span class="username"><strong>{{currentUser.profile.fullName}}</strong></span> <br>
+              <span class="handle">@{{currentUser.username}}</span>
             </div>
 
             <!-- profile stats -->

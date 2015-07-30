@@ -92,3 +92,7 @@ Meteor.publish('username', function(selector, options, colName) {
   self.ready();
   self.onStop(function() {userCursor.stop()});
 });
+
+Meteor.publish('images', function() {
+  return Images.find();
+});
