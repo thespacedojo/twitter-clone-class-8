@@ -24,3 +24,33 @@ Meteor.publish('profileTweets', function(username) {
   var user = Users.findOne({username: username});
   return Tweets.find({userId: user._id});
 });
+
+Meteor.publish('followChanges', function() {
+
+  if (this.userId) {
+    var self = this;
+    var initializing = true;
+
+    var user = Users.find(this.userId);
+    var handle = user.observeChanges({
+      changed: function (id, fields) {
+        if (!initializing) {
+          self.changed("followerCount", id, {count: fields.profile.followingIds.length});
+        }
+      }
+    });
+
+    initializing = false;
+    var tUser = user.fetch();
+    if (tUser) tUser = tUser[0];
+
+    self.added("followerCount", this.userId, {count: (!! tUser.profile.followingIds ? tUser.profile.followingIds.length: 0)});
+    self.ready();
+
+    self.onStop(function () {
+      handle.stop();
+    });
+  } else {
+    this.ready();
+  }
+});
